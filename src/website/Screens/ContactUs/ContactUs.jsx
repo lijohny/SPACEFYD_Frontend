@@ -41,15 +41,17 @@ const ContactUs = () => {
   };
 
   const handleSubmit = (e) => {
+    
     e.preventDefault();
-
+    const now = new Date().toLocaleString();
+    const fullData = { ...formData, time: now };
     if (validateForm()) {
-      emailjs
-      .send(
-        "service_sxvzn4k", // Your service ID
-        "template_mbqt1ni", // Your template ID
-        formData,
-        "ch-chHYzlLc1w9lT5" // Your public key
+      
+      emailjs.send(
+        "service_sxvzn4k",
+        "template_mbqt1ni",
+        fullData,
+        "ch-chHYzlLc1w9lT5"
       )
         .then(
           (result) => {
